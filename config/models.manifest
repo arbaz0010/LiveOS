@@ -1,4 +1,4 @@
-# NightRun model manifest — the single source of truth for the installer's
+# LiveOS model manifest — the single source of truth for the installer's
 # model catalog. Line format: `model.<id>.<key> = <value>` (parsed line by
 # line; this file is data, never sourced as shell). Blank lines and `#`
 # comments are ignored. Bump `manifest.version` on format changes.
