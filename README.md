@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="web/assets/logo.svg" alt="NIGHTRUN" height="56">
+<img src="web/assets/sample.svg" alt="LiveOS" height="56">
 
 **A local LLM runtime that boots from USB and runs without a conventional operating system.**
 
-<img src="web/assets/nightrun-demo.gif" alt="NightRun booting in QEMU: splash, model loading with inline CRC, then a prompt answered by Llama 3.2 on the framebuffer" width="720">
+<img src="web/assets/sample.gif" alt="LiveOS booting in QEMU: splash, model loading with inline CRC, then a prompt answered by Llama 3.2 on the framebuffer" width="720">
 
 *Real boot, one cut: loading and prefill sped up, generation at actual speed (Llama 3.2 1B, QEMU/KVM, 8 cores).*
 
@@ -15,7 +15,7 @@
 This is weird software. It boots straight into an LLM.
 
 There is no Linux userspace hiding underneath. Your machine's firmware starts NightRun
-directly, NightRun copies a quantized model into RAM, draws its own terminal on the
+directly, LiveOS copies a quantized model into RAM, draws its own terminal on the
 framebuffer, and you chat. No kernel, no browser, no network stack, no host process.
 The machine does exactly one thing.
 
@@ -34,8 +34,8 @@ and on a Raspberry Pi 5 from an SD card.
 ## Quick start
 
 ```sh
-git clone https://github.com/hardrave/NIGHTRUN.git
-cd NIGHTRUN
+git clone https://github.com/arbaz0010/LiveOS.git
+cd LiveOS
 less install.sh      # read what you are about to run
 ./install.sh
 ```
@@ -121,7 +121,7 @@ reference validation, and the converter will tell you so.
 
 ```
 firmware (UEFI)
-  -> NightRun entry: framebuffer, keyboard, timers, MP services
+  -> LiveOS entry: framebuffer, keyboard, timers, MP services
   -> model loader: streaming read + CRC verification
   -> .nrm validation: header, tensor table, tokenizer payload
   -> arena allocation: KV cache + scratch, sized up front
@@ -133,7 +133,7 @@ firmware (UEFI)
 
 Some choices worth explaining:
 
-**Why UEFI-resident.** NightRun deliberately stays on UEFI Boot Services instead of
+**Why UEFI-resident.** LiveOS deliberately stays on UEFI Boot Services instead of
 calling `ExitBootServices()`. That is what makes a USB keyboard, a display, and disk
 reads work on effectively any machine without shipping half a kernel's worth of drivers.
 Firmware is the platform layer; everything above it (loader, formats, tokenizer, kernels,
@@ -247,7 +247,7 @@ the conversation resets itself and says so on screen.
 
 ## Project status
 
-NightRun is experimental systems software. It works, it is tested hard, and it still
+LiveOS is experimental systems software. It works, it is tested hard, and it still
 assumes you are comfortable with firmware menus and boot media.
 
 Solid: the inference engine (parity-pinned against llama.cpp), the `.nrm` toolchain,
@@ -258,20 +258,6 @@ QEMU boots for both architectures, and the Pi 5 bring-up on a real D0 board.
 Still open: broad real-hardware coverage on x86 machines (firmware quirks vary), Pi 5
 sustained-thermal measurements, faster NEON dot kernels on the Pi (implemented, awaiting
 board re-benchmarks), and C1-stepping Pi boards (tooling ready, untested on our hardware).
-
-## Built with a coding agent
-
-Most of the code in this repository was written with Claude Code using the Fable 5 model.
-
-That is part of the point. NightRun is also a test of how far a coding agent can be
-pushed when the target is not a web app but a bootable systems project: firmware entry
-points, a binary model format, quantized SIMD kernels, tokenizer parity, and an installer
-that must never eat the wrong disk. The methodology stayed boring on purpose: reference
-implementations for every kernel, token-for-token parity gates, adversarial parser tests,
-and a paper trail in the docs.
-
-Judge it like normal software: does it boot, does it run, does it validate, does it avoid
-eating your USB drive, and does the code make sense?
 
 ## Contributing
 
