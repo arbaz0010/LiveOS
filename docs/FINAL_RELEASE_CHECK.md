@@ -1,4 +1,4 @@
-# NightRun — Final Pre-Release Check
+# LiveOS — Final Pre-Release Check
 
 Date: 2026-07-14 · Branch: `release/final-preflight` · Baseline: `7c2ea5f` (master)
 
