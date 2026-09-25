@@ -1,4 +1,4 @@
-# NightRun Pi 5 boot config (owned by the repo — vendor's pinned
+# LiveOS Pi 5 boot config (owned by the repo — vendor's pinned
 # config.txt plus the os_check override; see docs/rpi5-uefi.md).
 
 armstub=RPI_EFI.fd
