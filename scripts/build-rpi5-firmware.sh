@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the Raspberry Pi 5 UEFI firmware (TF-A + EDK2) from pinned source.
 #
-# NightRun policy (see docs/rpi5-uefi.md): firmware is built from source at
+# LiveOS policy (see docs/rpi5-uefi.md): firmware is built from source at
 # an exact reviewed commit — never downloaded as a binary release. The fork
 # delta vs the archived upstream was diff-reviewed on 2026-07-07.
 #
