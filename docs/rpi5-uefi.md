@@ -127,7 +127,7 @@ Stage gates; record each result (and the UART transcript) here. Serial:
      log shows config parsing and every fs_open attempt.
    Never hand-edit files on the card; rebuild with `cargo xtask
    pi-image` and re-flash.
-4. **NightRun boots**: `[nightrun] vX.Y.Z boot layer up` on UART;
+4. **LiveOS boots**: `[liveos] vX.Y.Z boot layer up` on UART;
    `[cpu] aarch64 neon baseline; dotprod=true fp16=true` expected on A76.
 5. **GOP**: synthwave splash on HDMI; note the mode
    (`[vid] ...` serial line).
