@@ -1,4 +1,4 @@
-# NightRun — Repository Quality Audit
+# LiveOS — Repository Quality Audit
 
 Date: 2026-07-08 · Baseline commit: `204d11cd` (master) · Audit branch: `audit/repository-quality`
 
