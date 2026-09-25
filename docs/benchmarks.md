@@ -1,4 +1,4 @@
-# NightRun benchmarks (measured)
+# LiveOS benchmarks (measured)
 
 ## Raspberry Pi 5 (real hardware, 2026-07-07, first measurements)
 
