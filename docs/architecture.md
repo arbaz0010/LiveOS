@@ -1,6 +1,6 @@
-# NightRun architecture
+# LiveOS architecture
 
-NightRun is one `no_std` Rust UEFI application that boots a machine straight into a
+LiveOS is one `no_std` Rust UEFI application that boots a machine straight into a
 local LLM chat. This file is the engineering reference: what runs where, why the big
 decisions went the way they did, and which mistakes already got caught by the test
 suite so you don't repeat them.
@@ -10,18 +10,13 @@ Four models ship in the catalog across three model families: Llama 3.2 1B Instru
 and Qwen3-4B-Instruct-2507 (Q4_K_M). One model per image
 (`cargo xtask image --model <file.nrm>`).
 
-Scope note: NightRun supports the conventional dense transformer variant of Granite
+Scope note: LiveOS supports the conventional dense transformer variant of Granite
 only. Hybrid Granite architectures (Mamba-2/SSM layers, MoE) are intentionally out of
 scope and rejected at conversion with a named, actionable error.
 
-Background: most of the code was written with Claude Code using the Fable 5 model,
-against a fixed methodology of reference kernels, token-level parity gates and
-adversarial parser tests. The README's "Built with a coding agent" section has the
-short version.
-
 ## The load-bearing decision: UEFI Boot Services stay on
 
-NightRun never calls `ExitBootServices`. The firmware provides exactly four things at
+LiveOS never calls `ExitBootServices`. The firmware provides exactly four things at
 runtime:
 
 | Firmware service | Used for |
