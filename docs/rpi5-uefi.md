@@ -1,6 +1,6 @@
 # Raspberry Pi 5 UEFI firmware: selection, pins, and known limitations
 
-NightRun on Pi 5 runs as a standard AArch64 UEFI application on top of a
+LiveOS on Pi 5 runs as a standard AArch64 UEFI application on top of a
 TF-A + EDK2 firmware port. This file records which firmware we use, why,
 how it is built, and what is known not to work. **Read this before
 touching the firmware setup; update it whenever a pin changes.**
