@@ -1,7 +1,7 @@
-# The NightRun installer (`./install.sh`)
+# The LiveOS installer (`./install.sh`)
 
 An interactive tool that takes you from "which machine?" to verified,
-bootable NightRun media: target choice -> model catalog -> verified
+bootable LiveOS media: target choice -> model catalog -> verified
 download (or local GGUF) -> conversion -> a real target-specific image ->
 safe device selection -> two-stage confirmed flash -> readback
 verification -> boot instructions.
@@ -90,7 +90,7 @@ enough free space to convert and package it, and it must pass the same
 `nrconvert` converts GGUF -> `.nrm` (skipped when a current `.nrm`
 exists); `cargo xtask image|pi-image --model …` assembles the image. The
 screen shows stage lines; full tool output lands in
-`build/nightrun-installer-logs/<timestamp>/`. The image is hashed
+`build/liveos-installer-logs/<timestamp>/`. The image is hashed
 immediately; that digest anchors both the pre-flash revalidation and the
 post-flash verification. Failures name the stage, keep the logs, and
 never delete verified cached downloads.
@@ -175,7 +175,7 @@ script never stays root.
 | download failure | network or HF hiccup; the `.part` file resumes on re-run |
 | HF access denied | gated repo: accept terms on the model page; token via `HF_TOKEN` or the hidden prompt |
 | GGUF incompatible | unsupported family (hybrid/SSM/MoE rejected by design); the inspect card explains |
-| conversion failure | see `build/nightrun-installer-logs/<ts>/nrconvert.log` |
+| conversion failure | see `build/liveos-installer-logs/<ts>/nrconvert.log` |
 | image build failure | see `.../image.log`; Pi target additionally needs the firmware payload |
 | verification mismatch | worn/faulty media or reader: re-flash, then try different media |
 | boots to black screen (x86) | Secure Boot on, or wrong boot entry: pick the USB in the firmware boot menu |
@@ -183,7 +183,7 @@ script never stays root.
 
 ## Debug mode
 
-`NIGHTRUN_INSTALL_DEBUG=1 ./install.sh` runs `bash -x` style tracing into
+`LIVEOS_INSTALL_DEBUG=1 ./install.sh` runs `bash -x` style tracing into
 the log directory. There is deliberately **no** non-interactive flashing
 mode: destructive writes always require the interactive confirmations.
 
